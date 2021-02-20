@@ -59,7 +59,19 @@ Exercise 1:
 
   "Hi, my name is {firstName} {lastName}. I am {age} years old, and work as a {occupation}."
 */
+// for (const writer in writers) {
+//   console.log(
+//     `Hi, my name is ${writers[writer].firstName} ${writers[writer].lastName}. I am ${writers[writer].age} years old, and work as a ${writers[writer].occupation}.`
+//   );
+// }
 
+// map method You can also call Object.entries()
+// to generate an array with all its enumerable properties, and loop through that
+// Object.entries(writers).map(([key, value]) =>
+//   console.log(
+//     `Hi, my name is ${value.firstName} ${value.lastName}. I am ${value.age} years old, and work as a ${value.occupation}.`
+//   )
+// );
 /*
 Exercise 2:
 
@@ -68,6 +80,13 @@ Exercise 2:
 
   "Writer {firstName} {lastName} died at {age} years old."
 */
+Object.entries(writers).map(([key, value]) => {
+  if (value.alive === false && value.age <= 49) {
+    console.log(
+      `Writer ${value.firstName} ${value.lastName} died at ${value.age} years old.`
+    );
+  }
+});
 
 /*
 Exercise 3:

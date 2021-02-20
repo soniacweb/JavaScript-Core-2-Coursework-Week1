@@ -30,6 +30,18 @@ Exercise 1:
 */
 // Gather all week item names into this array
 let weeklyGroceriesToBuy = [];
+let unique = [];
+for (let meals in weeklyMealPlan) {
+  // console.log(weeklyMealPlan[meals]);
+  weeklyGroceriesToBuy.push(weeklyMealPlan[meals]);
+  weeklyGroceriesToBuy.flat();
+}
+
+weeklyGroceriesToBuy.filter(
+  (value, index) => weeklyGroceriesToBuy.indexOf(value) == index
+);
+
+console.log("weekly unique:", weeklyGroceriesToBuy);
 
 /*
 Exercise 2:
@@ -56,3 +68,18 @@ let numberOfItemsPerWeek = {
   saturday: 0,
   sunday: 0,
 };
+
+// for (x in weeklyMealPlan) {
+//   console.log(weeklyMealPlan[x].length);
+// }
+
+// console.log("before any changes: ", numberOfItemsPerWeek);
+
+// for (const prop of Object.keys(weeklyMealPlan)) {
+//   if (prop in numberOfItemsPerWeek) {
+//     numberOfItemsPerWeek[prop] = weeklyMealPlan[prop].length;
+//   }
+//   console.log("inside loop:", numberOfItemsPerWeek);
+// }
+
+// console.log("outside: ", numberOfItemsPerWeek);
