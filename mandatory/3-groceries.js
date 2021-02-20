@@ -19,7 +19,7 @@ let weeklyMealPlan = {
   thursday: ["Lamb", "Salt", "Bulgur", "Potato"],
   friday: ["Rice milk", "Blueberries", "Porridge", "Banana", "Cinnamon"],
   saturday: ["Olive oil", "Potato", "Salmon", "Asparagus"],
-  sunday: [],
+  sunday: ["hello sonia"],
 };
 
 /*
@@ -34,14 +34,19 @@ let unique = [];
 for (let meals in weeklyMealPlan) {
   // console.log(weeklyMealPlan[meals]);
   weeklyGroceriesToBuy.push(weeklyMealPlan[meals]);
-  weeklyGroceriesToBuy.flat();
 }
 
-weeklyGroceriesToBuy.filter(
+const flattened = weeklyGroceriesToBuy.reduce(function (a, b) {
+  return a.concat(b);
+});
+
+flattened.filter(
   (value, index) => weeklyGroceriesToBuy.indexOf(value) == index
 );
 
-console.log("weekly unique:", weeklyGroceriesToBuy);
+weeklyGroceriesToBuy = flattened;
+
+// console.log("weeklyGroceriesToBuy:", weeklyGroceriesToBuy);
 
 /*
 Exercise 2:
@@ -49,8 +54,22 @@ Exercise 2:
   Then use console.log() to print out the list.
 */
 // Gather weekend item names into this array
-let weekendGroceriesToBuy = [];
 
+const saturday = weeklyMealPlan.saturday;
+const sunday = weeklyMealPlan.sunday;
+let weekendGroceriesToBuy = [...saturday, ...sunday];
+
+console.log("saturday:", saturday);
+console.log("sunday:", sunday);
+
+console.log("weekend", weekendGroceriesToBuy);
+
+const map = new Map(Object.entries(weeklyMealPlan));
+
+// map.forEach(([key, value]) => console.log(`${key}: ${value}`)); // "foo: bar", "baz: 42"
+
+// const map = Object.entries(weeklyMealPlan).map((key, meal) => meal);
+// console.log(map, filter);
 /*
 Exercise 3:
   Loop through your weekly meal plan:
@@ -69,17 +88,17 @@ let numberOfItemsPerWeek = {
   sunday: 0,
 };
 
-// for (x in weeklyMealPlan) {
-//   console.log(weeklyMealPlan[x].length);
-// }
+for (x in weeklyMealPlan) {
+  console.log(weeklyMealPlan[x].length);
+}
 
-// console.log("before any changes: ", numberOfItemsPerWeek);
+console.log("before any changes: ", numberOfItemsPerWeek);
 
-// for (const prop of Object.keys(weeklyMealPlan)) {
-//   if (prop in numberOfItemsPerWeek) {
-//     numberOfItemsPerWeek[prop] = weeklyMealPlan[prop].length;
-//   }
-//   console.log("inside loop:", numberOfItemsPerWeek);
-// }
+for (const prop of Object.keys(weeklyMealPlan)) {
+  if (prop in numberOfItemsPerWeek) {
+    numberOfItemsPerWeek[prop] = weeklyMealPlan[prop].length;
+  }
+  console.log("inside loop:", numberOfItemsPerWeek);
+}
 
-// console.log("outside: ", numberOfItemsPerWeek);
+console.log("outside: ", numberOfItemsPerWeek);

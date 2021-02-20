@@ -80,18 +80,30 @@ Exercise 2:
 
   "Writer {firstName} {lastName} died at {age} years old."
 */
-Object.entries(writers).map(([key, value]) => {
-  if (value.alive === false && value.age <= 49) {
+// Object.entries(writers).map(([key, value]) => {
+//   if (value.alive === false && value.age <= 49) {
+//     console.log(
+//       `Writer ${value.firstName} ${value.lastName} died at ${value.age} years old.`
+//     );
+//   }
+// });
+
+// /*
+// Exercise 3:
+
+// Only `console.log()` out alive writers who are in their 40s (meaning between 40 and 49):
+
+// "Hi, my name is {firstName} {lastName}. I am {age} years old."
+
+// for loop
+
+for (const writer in writers) {
+  if (
+    writers[writer].alive === true &&
+    writers[writer].age >= 40 &&
+    writers[writer].age <= 49
+  )
     console.log(
-      `Writer ${value.firstName} ${value.lastName} died at ${value.age} years old.`
+      `Hi, my name is ${writers[writer].firstName} ${writers[writer].lastName} I am ${writers[writer].age} years old.`
     );
-  }
-});
-
-/*
-Exercise 3:
-
-  Only `console.log()` out alive writers who are in their 40s (meaning between 40 and 49):
-
-  "Hi, my name is {firstName} {lastName}. I am {age} years old."
-*/
+}
